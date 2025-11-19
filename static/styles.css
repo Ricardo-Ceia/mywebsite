@@ -1,30 +1,74 @@
 :root {
-  --bg-color: #fafafa;
-  --text-color: #333;
-  --text-secondary: #666;
-  --link-color: #000;
-  --link-hover: #000;
-  --code-bg: #eee;
-  --code-text: #888;
-  --card-bg: #ffffff;
-  --card-border: #eee;
-  --card-hover-border: #ccc;
-  --accent-color: #6699cc;
+  /* Realistic Sakura - Light */
+  --bg-color: #fdfdfd;
+  --text-color: #1a1a1a; /* Neutral dark grey */
+  --text-secondary: #555;
+  --link-color: #000; /* Black links for contrast */
+  --link-hover: #555; /* Dark grey hover */
+  --code-bg: #f5f5f5;
+  --code-text: #333;
+  --card-bg: transparent;
+  --card-border: transparent;
+  --card-hover-border: transparent;
+  --accent-color: #000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-color: #1a1a1a;
-    --text-color: #f0f0f0;
-    --text-secondary: #aaa;
+    /* Realistic Sakura - Dark */
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --text-secondary: #a0a0a0;
     --link-color: #fff;
-    --link-hover: #fff;
-    --code-bg: #333;
+    --link-hover: #ccc; /* Light grey hover */
+    --code-bg: #1e1e1e;
     --code-text: #ccc;
-    --card-bg: #2a2a2a;
-    --card-border: #444;
-    --card-hover-border: #666;
-    --accent-color: #8ab4f8;
+    --card-bg: transparent;
+    --card-border: transparent;
+    --card-hover-border: transparent;
+    --accent-color: #fff;
+  }
+}
+
+/* Remove the old background pattern */
+body::before {
+  display: none;
+}
+
+/* Falling Petal Styles */
+.petal {
+  position: fixed;
+  top: -10%;
+  z-index: -1;
+  background: linear-gradient(135deg, #ffc0cb 0%, #ffb7b2 100%); /* Gradient for depth */
+  opacity: 0;
+  border-radius: 100% 0 100% 0; /* Leaf/Petal shape */
+  animation: fall linear infinite;
+  pointer-events: none; /* Let clicks pass through */
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle shadow for realism */
+}
+
+@media (prefers-color-scheme: dark) {
+  .petal {
+    background: linear-gradient(135deg, #ffb7b2 0%, #e6a3a3 100%);
+    opacity: 0.6;
+  }
+}
+
+@keyframes fall {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg) rotateX(0deg);
+  }
+  10% {
+    opacity: 0.9;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift), 110vh) rotate(360deg) rotateX(180deg); /* 3D rotation */
   }
 }
 
@@ -35,7 +79,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   background-color: var(--bg-color);
   color: var(--text-color);
   display: flex;
@@ -46,6 +90,8 @@ body {
   text-align: center;
   padding: 20px;
   animation: fadeIn 0.8s ease-out;
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal scrollbar from drifting petals */
 }
 
 .presentation-h1 {
@@ -65,22 +111,25 @@ a {
   text-decoration: none;
   color: var(--link-color);
   font-weight: 600;
-  border-bottom: 1px solid var(--card-border);
-  transition: border-color 0.2s ease;
+  border-bottom: none;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  border-bottom: 2px solid var(--link-hover);
+  color: var(--link-hover);
+  text-decoration: underline;
+  border-bottom: none;
 }
 
 .presentation-h2 {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
-  color: var(--code-text);
-  font-family: "Courier New", Courier, monospace;
-  background-color: var(--code-bg);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: inherit;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 2rem;
 }
 
 .projects-title {
@@ -100,29 +149,34 @@ a:hover {
 }
 
 .project-card {
-  background-color: var(--card-bg);
-  border: 2px solid var(--card-border);
-  border-radius: 8px;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  transition: transform 0.2s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--card-hover-border);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateX(5px);
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .project-card a {
   display: flex;
   align-items: center;
-  padding: 15px;
-  border-bottom: none; /* Remove default link underline for card */
-  color: var(--text-color);
-  gap: 10px;
+  padding: 10px 0;
+  border-bottom: none;
+  color: var(--link-color);
+  gap: 15px;
+}
+
+.project-card a:hover {
+  color: var(--link-hover);
+  text-decoration: none;
 }
 
 .project-card svg {
-  fill: var(--text-color);
+  fill: currentColor;
 }
 
 .footer {

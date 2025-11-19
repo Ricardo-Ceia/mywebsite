@@ -50,5 +50,37 @@
   <footer class="footer">
     &copy; 2025 Ricardo Ceia
   </footer>
+  
+  <script>
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      
+      // Randomize starting position (left 0 to 100vw)
+      petal.style.left = Math.random() * 100 + 'vw';
+      
+      // Randomize size (10px to 20px)
+      const size = Math.random() * 10 + 10;
+      petal.style.width = size + 'px';
+      petal.style.height = size + 'px';
+      
+      // Randomize animation duration (5s to 10s)
+      petal.style.animationDuration = Math.random() * 5 + 5 + 's';
+      
+      // Randomize drift (wind effect)
+      const drift = (Math.random() - 0.5) * 200 + 'px';
+      petal.style.setProperty('--drift', drift);
+      
+      document.body.appendChild(petal);
+      
+      // Remove petal after animation ends to prevent memory leaks
+      setTimeout(() => {
+        petal.remove();
+      }, 10000);
+    }
+
+    // Create a new petal every 300ms
+    setInterval(createPetal, 300);
+  </script>
 </body>
 </html>
