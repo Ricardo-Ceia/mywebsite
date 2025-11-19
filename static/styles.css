@@ -1,3 +1,33 @@
+:root {
+  --bg-color: #fafafa;
+  --text-color: #333;
+  --text-secondary: #666;
+  --link-color: #000;
+  --link-hover: #000;
+  --code-bg: #eee;
+  --code-text: #888;
+  --card-bg: #ffffff;
+  --card-border: #eee;
+  --card-hover-border: #ccc;
+  --accent-color: #6699cc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --text-secondary: #aaa;
+    --link-color: #fff;
+    --link-hover: #fff;
+    --code-bg: #333;
+    --code-text: #ccc;
+    --card-bg: #2a2a2a;
+    --card-border: #444;
+    --card-hover-border: #666;
+    --accent-color: #8ab4f8;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,18 +36,20 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #fafafa; 
-  color: #333; 
+  background-color: var(--bg-color);
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Forces the body to be at least as tall as the screen */
+  min-height: 100vh;
   text-align: center;
+  padding: 20px;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .presentation-h1 {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   letter-spacing: -1px;
   margin-bottom: 0.5rem;
@@ -25,43 +57,88 @@ body {
 
 p {
   font-size: 1.1rem;
-  color: #666;  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
 }
 
 a {
-  text-decoration: none; /* Remove standard ugly underline */
-  color: #000;
+  text-decoration: none;
+  color: var(--link-color);
   font-weight: 600;
-  border-bottom: 1px solid #ccc; /* subtle underline */
+  border-bottom: 1px solid var(--card-border);
   transition: border-color 0.2s ease;
 }
 
 a:hover {
-  border-bottom: 2px solid #000; /* darker, thicker line on hover */
+  border-bottom: 2px solid var(--link-hover);
 }
 
 .presentation-h2 {
   font-size: 0.9rem;
   font-weight: 400;
-  color: #888;
+  color: var(--code-text);
   font-family: "Courier New", Courier, monospace;
-  background-color: #eee; /* subtle grey background like a code snippet */
+  background-color: var(--code-bg);
   padding: 0.5rem 1rem;
   border-radius: 4px;
 }
 
-.project-list{
+.projects-title {
   padding-top: 25px;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
+  color: var(--accent-color);
 }
 
-.project-card{
-  background-color:#ffff;
-  border:2px solid #eee;
-  border-radius:8px;
+.project-list {
+  padding-bottom: 25px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 8px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--card-hover-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .project-card a {
-  display:flex;
-  flex-direction:row;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: none; /* Remove default link underline for card */
+  color: var(--text-color);
+  gap: 10px;
+}
+
+.project-card svg {
+  fill: var(--text-color);
+}
+
+.footer {
+  margin-top: 3rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
