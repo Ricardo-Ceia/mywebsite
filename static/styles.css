@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fafafa; 
+  color: #333; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Forces the body to be at least as tall as the screen */
+  text-align: center;
+}
+
+.presentation-h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #666;  margin-bottom: 2rem;
+}
+
+a {
+  text-decoration: none; /* Remove standard ugly underline */
+  color: #000;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc; /* subtle underline */
+  transition: border-color 0.2s ease;
+}
+
+a:hover {
+  border-bottom: 2px solid #000; /* darker, thicker line on hover */
+}
+
+.presentation-h2 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #888;
+  font-family: "Courier New", Courier, monospace;
+  background-color: #eee; /* subtle grey background like a code snippet */
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
