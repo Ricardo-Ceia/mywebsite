@@ -36,15 +36,23 @@ body {
   line-height: 1.6;
   letter-spacing: -0.01em;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: 100vh;
-  text-align: center;
-  padding: 20px;
-  position: relative;
+  height: 100vh;
+  padding: 20px 20px 15vh;
+  box-sizing: border-box;
   overflow: hidden;
+  margin: 0;
 }
+
+main {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -71,10 +79,10 @@ body {
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
-  padding: 0.25rem 0.5rem;
+  padding: 0.1rem 0.5rem;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
-  animation-delay: 0.1s;
+  margin-bottom: 0.25rem;
 }
 
 .info-header p {
@@ -108,29 +116,27 @@ body {
   border: none;
   border-top: 1px dashed var(--text-secondary);
   opacity: 0.4;
-  margin: 1rem calc(-50vw + 50%) 1.5rem;
+  margin: 0.25rem calc(-50vw + 50%) 0.75rem;
   transform: scaleX(0);
   transform-origin: center;
   animation: expandDivider 0.8s ease-out forwards;
-  animation-delay: 0.3s;
 }
 
 .presentation-h1 {
-  font-size: clamp(2.25rem, 4vw, 2.75rem);
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
   font-weight: 700;
   letter-spacing: -0.04em;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
   margin-top: 0;
   overflow: hidden;
   border-right: .15em solid var(--accent-color);
   white-space: nowrap;
-  margin: 0 auto 0.3rem;
+  margin: 0 auto 0.2rem;
   width: 0;
   display: inline-block;
   animation: 
-    typing 2.5s steps(23, end) forwards,
-    blink-caret .75s step-end 5 forwards;
-  animation-delay: 0.8s;
+    typing 1.8s steps(23, end) forwards,
+    blink-caret .50s step-end 5 forwards;
   max-width: 100%;
 }
 
@@ -138,22 +144,57 @@ body {
   display: none;
 }
 
+.skills {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0.75rem 0 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+  animation-delay: 0.7s;
+}
+
+.resume-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+  animation-delay: 0.9s;
+  border: 1px solid var(--text-color);
+  padding: 0.5rem 0.8rem;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.resume-link::after {
+  display: none;
+}
+
+.resume-link:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  transform: translateY(1px);
+}
+
 p {
   font-size: 1rem;
   color: var(--text-secondary);
-  margin: 0 0 1.5rem;
+  margin: 0 0 1rem;
 }
 
 .about-me {
-  margin-top: 0.25rem;
-  line-height: 1.6;
+  margin-top: 0.2rem;
+  line-height: 1.5;
   text-align: left;
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
-  animation-delay: 3.5s;
+  animation-delay: 0.5s;
+  font-size: 0.95rem;
 }
 
 a {
