@@ -12,6 +12,11 @@
   --accent-color: #000;
 }
 
+html {
+  font-size: clamp(16px, 1vw + 14px, 22px);
+  -webkit-text-size-adjust: 100%;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #121212;
@@ -37,19 +42,20 @@ body {
   letter-spacing: -0.01em;
   display: flex;
   height: 100vh;
-  padding: 20px 20px 15vh;
   box-sizing: border-box;
+  padding-top:10px;
+  padding-bottom:10px;
   overflow: hidden;
   margin: 0;
 }
 
 main {
-  margin: auto;
+  margin: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 800px;
+  justify-content: space-between;
 }
 
 
